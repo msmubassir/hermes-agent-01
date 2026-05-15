@@ -1,9 +1,13 @@
 :10000
 
 handle /terminal/* {
+    uri strip_prefix /terminal
     reverse_proxy 127.0.0.1:7681
 }
 
 handle {
-    reverse_proxy 127.0.0.1:9119
+    reverse_proxy 127.0.0.1:9119 {
+        header_up Host 127.0.0.1
+        header_up X-Forwarded-Host 127.0.0.1
+    }
 }
