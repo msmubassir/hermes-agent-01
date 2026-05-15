@@ -115,5 +115,7 @@ ENV HERMES_HOME=/opt/data
 ENV PATH="/opt/data/.local/bin:${PATH}"
 VOLUME [ "/opt/data" ]
 ENTRYPOINT [ "/usr/bin/tini", "-g", "--", "/opt/hermes/docker/entrypoint.sh" ]
-CMD ["dashboard", "--host", "0.0.0.0", "--port", "10000", "--insecure", "--no-open"]
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
+CMD ["/start.sh"]
