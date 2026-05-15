@@ -26,7 +26,7 @@ fi
   bash &
 
 # Install python deps if missing
-python -m pip install flask requests
+uv pip install flask requests
 
 # Start proxy server
 python proxy.py
