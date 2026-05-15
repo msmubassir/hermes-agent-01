@@ -15,8 +15,5 @@ ttyd \
   --port 7681 \
   bash &
 
-# Install nginx
-apt-get update && apt-get install -y nginx
-
 # Start nginx
 nginx -g 'daemon off;'
