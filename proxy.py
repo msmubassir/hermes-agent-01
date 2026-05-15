@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-DASHBOARD = "http://127.0.0.1:10000"
+DASHBOARD = "http://127.0.0.1:9119"
 TERMINAL = "http://127.0.0.1:7681"
 
 @app.route("/", defaults={"path": ""})
