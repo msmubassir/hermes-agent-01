@@ -5,11 +5,11 @@ PORT="${PORT:-10000}"
 
 # Hermes dashboard
 hermes dashboard \
-  --host 0.0.0.0 \
-  --port "${PORT}" \
+  --host 127.0.0.1 \
+  --port 9119 \
   --insecure \
   --no-open &
-  
+
 # Download ttyd if missing
 if [ ! -f /opt/data/ttyd ]; then
   curl -L \
@@ -21,8 +21,12 @@ fi
 
 # Web terminal
 /opt/data/ttyd \
+  --writable \
   --port 7681 \
   bash &
-  
-# Keep container alive
-sleep infinity
+
+# Install python deps if missing
+python -m pip install flask requests
+
+# Start proxy server
+python proxy.py
