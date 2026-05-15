@@ -10,6 +10,9 @@ hermes dashboard \
   --insecure \
   --no-open &
 
+# Wait for dashboard
+sleep 15
+
 # Download ttyd if missing
 if [ ! -f /opt/data/ttyd ]; then
   curl -L \
