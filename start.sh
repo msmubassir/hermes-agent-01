@@ -4,7 +4,7 @@ set -e
 PORT="${PORT:-10000}"
 
 # Hermes dashboard
-hermes dashboard \
+uv run python -m hermes_cli.main dashboard \
   --host 0.0.0.0 \
   --port 9119 \
   --insecure \
