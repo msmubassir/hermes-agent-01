@@ -10,7 +10,7 @@ hermes dashboard \
   --insecure \
   --no-open &
 
-# Wait for dashboard
+# Wait for Hermes
 sleep 15
 
 # Download ttyd if missing
@@ -22,16 +22,12 @@ if [ ! -f /opt/data/ttyd ]; then
   chmod +x /opt/data/ttyd
 fi
 
-# Terminal backend (internal only)
+# Terminal backend
 /opt/data/ttyd \
   --writable \
   --interface 127.0.0.1 \
   --port 7681 \
   bash &
 
-# Python deps
-uv pip install flask requests
-
-# Start public proxy server
-export FLASK_APP=proxy.py
-flask run --host=0.0.0.0 --port="${PORT}"
+# Start Caddy reverse proxy
+exec caddy run --config /opt/hermes/Caddyfile
