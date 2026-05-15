@@ -1,0 +1,9 @@
+:10000
+
+handle /terminal/* {
+    reverse_proxy 127.0.0.1:7681
+}
+
+handle {
+    reverse_proxy 127.0.0.1:9119
+}
